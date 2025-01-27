@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">
+            <i class="bi bi-grid-3x3-gap-fill text-primary me-2"></i>Our Products
+        </h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        {% if product.name == 'eza' %}
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" 
+                                 class="card-img-top product-image" 
+                                 alt="Pizza">
+                        {% elseif product.name == 'ezaeaz' %}
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" 
+                                 class="card-img-top product-image" 
+                                 alt="Burger">
+                        {% elseif product.name == 'pazzo' %}
+                            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141" 
+                                 class="card-img-top product-image" 
+                                 alt="Pasta">
+                        {% elseif product.name == 'candy' %}
+                            <img src="https://images.unsplash.com/photo-1581798459219-318e76aecc7b" 
+                                 class="card-img-top product-image" 
+                                 alt="Candy">
+                        {% else %}
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" 
+                                 class="card-img-top product-image" 
+                                 alt="Food">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-tag-fill text-primary me-2"></i>
+                                {{ product.name|replace({'<div>': '', '</div>': ''}) }}
+                            </h5>
+                            <p class="card-text">
+                                {{ product.description|default('Delicious food item')|replace({'<div>': '', '</div>': ''}) }}
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold">
+                                    <i class="bi bi-currency-euro me-1"></i>{{ product.price|number_format(2) }}
+                                </span>
+                                <form action="{{ path('cart_add', {'id': product.id}) }}" method="POST">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

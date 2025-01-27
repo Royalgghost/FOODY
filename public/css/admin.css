@@ -1,0 +1,456 @@
+/* Base */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #1a1c23;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+
+/* Layout */
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* Sidebar */
+
+.admin-sidebar {
+    width: 250px;
+    background: #2C3E50;
+    padding: 1rem 0;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-title {
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FF6B6B;
+    letter-spacing: 0.5px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: 0.2s;
+    gap: 0.75rem;
+    margin: 0.25rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255, 107, 107, 0.1);
+    color: #FF6B6B;
+}
+
+.nav-item.active {
+    background: rgba(255, 107, 107, 0.1);
+    color: #FF6B6B;
+}
+
+
+/* Main Content */
+
+.admin-content {
+    flex: 1;
+    margin-left: 250px;
+}
+
+
+/* Header */
+
+.admin-header {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+    padding: 2rem;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Quick Actions */
+
+.quick-actions {
+    margin-top: -50px;
+    padding: 0 2rem;
+}
+
+.quick-actions h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.action-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.action-links a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: #2C3E50;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.action-links a:hover {
+    background: #FF6B6B;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+}
+
+
+/* Recent Activity */
+
+.recent-activity {
+    padding: 2rem;
+}
+
+.recent-activity h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: none;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item i {
+    color: #9ca3af;
+}
+
+.activity-item p {
+    margin: 0;
+    color: #fff;
+}
+
+.activity-item span {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+.activity-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* User Info */
+
+.user-info {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #9ca3af;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.user-info a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.user-info a:hover {
+    color: #FF6B6B;
+}
+
+
+/* Form Styles */
+
+.form-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #FF6B6B;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #FF6B6B;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Action Buttons */
+
+.action-button {
+    background: #2C3E50;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.action-button:hover {
+    background: #FF6B6B;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+}
+
+
+/* Orders Table Styles */
+
+.orders-container {
+    padding: 2rem;
+}
+
+.table {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border-collapse: collapse;
+}
+
+.table th {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FF6B6B;
+    font-weight: 600;
+}
+
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.status-completed {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.status-cancelled {
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.form-select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.375rem 2rem 0.375rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #FF6B6B;
+}
+
+.btn-info {
+    background: rgba(23, 162, 184, 0.2);
+    color: #17a2b8;
+}
+
+.btn-info:hover {
+    background: rgba(23, 162, 184, 0.3);
+}
+
+
+/* Order Details Styles */
+
+.order-details-container {
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.back-button {
+    color: #fff;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: #FF6B6B;
+}
+
+.order-info-card,
+.order-items-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.order-info-card h2,
+.order-items-card h2 {
+    color: #FF6B6B;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.info-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-item label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+.info-item span {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.status-form {
+    margin-top: 0.5rem;
+}
+
+.table tfoot {
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.table tfoot td {
+    padding: 1rem;
+}
+
+.text-right {
+    text-align: right;
+}

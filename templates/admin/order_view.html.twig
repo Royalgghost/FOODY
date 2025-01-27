@@ -1,0 +1,79 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Order #{{ order.id }} Details{% endblock %}
+
+{% block body %}
+<div class="admin-layout">
+    {% include 'admin/_sidebar.html.twig' %}
+    
+    <main class="admin-content">
+        <div class="admin-header">
+            <div class="header-title">
+                <a href="{{ path('admin_order_details') }}" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1>Order #{{ order.id }}</h1>
+            </div>
+            <span class="status-badge status-{{ order.status|lower }}">{{ order.status }}</span>
+        </div>
+
+        <div class="order-details-container">
+            <div class="order-info-card">
+                <h2>Order Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Order Date</label>
+                        <span>{{ order.createdAt|date('Y-m-d H:i:s') }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Customer Email</label>
+                        <span>{{ order.user.email }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Status</label>
+                        <form action="{{ path('admin_order_update_status', {id: order.id}) }}" method="POST" class="status-form">
+                            <select name="status" onchange="this.form.submit()" class="form-select">
+                                <option value="PENDING" {% if order.status == 'PENDING' %}selected{% endif %}>Pending</option>
+                                <option value="COMPLETED" {% if order.status == 'COMPLETED' %}selected{% endif %}>Completed</option>
+                                <option value="CANCELLED" {% if order.status == 'CANCELLED' %}selected{% endif %}>Cancelled</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-items-card">
+                <h2>Order Items</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.orderItems %}
+                                <tr>
+                                    <td>{{ item.product.name }}</td>
+                                    <td>€{{ item.price }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>€{{ (item.price * item.quantity)|number_format(2, '.', ',') }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                                <td><strong>€{{ order.total }}</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %} 

@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1c23;
+            color: #fff;
+        }
+
+        .admin-layout {
+            display: flex;
+        }
+
+        /* Sidebar */
+        .admin-sidebar {
+            width: 250px;
+            background: #24262d;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .admin-title {
+            padding: 20px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: #9ca3af;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        /* Main Content */
+        .admin-content {
+            margin-left: 250px;
+            flex: 1;
+        }
+
+        /* Header */
+        .admin-header {
+            background: #5C6BC0;
+            padding: 30px;
+            height: 300px;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            margin-top: -50px;
+            padding: 0 30px;
+        }
+
+        .quick-actions h2 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .action-links a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #24262d;
+            border-radius: 6px;
+        }
+
+        /* Recent Activity */
+        .recent-activity {
+            padding: 30px;
+        }
+
+        .recent-activity h2 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .activity-item i {
+            color: #9ca3af;
+        }
+
+        .activity-item p {
+            margin: 0;
+        }
+
+        .activity-item span {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* User Info */
+        .user-info {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #9ca3af;
+        }
+
+        .user-info a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-title">E-Shop Admin</div>
+            <nav>
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-list"></i>
+                    Categories
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-box"></i>
+                    Products
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="admin-header">
+                <h1>Foody Admin</h1>
+            </div>
+
+            <div class="quick-actions">
+                <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+                <div class="action-links">
+                    <a href="#"><i class="fas fa-list"></i> View Orders</a>
+                    <a href="#"><i class="fas fa-plus"></i> Add Product</a>
+                    <a href="#"><i class="fas fa-tags"></i> Categories</a>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2><i class="fas fa-clock"></i> Recent Activity</h2>
+                <div class="activity-item">
+                    <i class="fas fa-lock"></i>
+                    <div>
+                        <p>New order #1234 received</p>
+                        <span>5 minutes ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <p>New customer registration</p>
+                        <span>15 minutes ago</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="user-info">
+            <span>{{ app.user.email }}</span>
+            <a href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </div>
+{% endblock %} 

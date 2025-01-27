@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="products-container">
+    <h1 class="products-title">Our Products</h1>
+    
+    <div class="products-grid">
+        {% for product in products %}
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="{{ product.image }}" alt="{{ product.name }}" class="product-image">
+                    <button class="quick-view-btn">Quick View</button>
+                </div>
+                <div class="product-content">
+                    <h2 class="product-title">{{ product.name }}</h2>
+                    <p class="product-description">{{ product.description }}</p>
+                    <div class="product-price">€{{ product.price }}</div>
+                    <form method="POST" action="{{ path('app_cart_add', {'id': product.id}) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('add-item-' ~ product.id) }}"/>
+                        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 

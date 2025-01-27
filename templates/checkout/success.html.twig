@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order Confirmed{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="alert alert-success">
+        <h4 class="alert-heading">Order Confirmed!</h4>
+        <p>Your order #{{ order.id }} has been successfully placed.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Order Summary
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.orderItems %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>€{{ item.price }}</td>
+                            <td>€{{ item.price * item.quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                        <td><strong>€{{ order.total }}</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{{ path('app_product_index') }}" class="btn btn-primary">Continue Shopping</a>
+    </div>
+</div>
+{% endblock %} 

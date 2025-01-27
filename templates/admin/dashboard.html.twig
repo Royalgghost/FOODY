@@ -1,0 +1,208 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-header {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            padding: 1.5rem 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .dashboard-stats {
+            padding: 1.5rem 2rem;
+            margin-top: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-box {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-icon.orders { background: #e3f2fd; color: #1976d2; }
+        .stat-icon.revenue { background: #e8f5e9; color: #2e7d32; }
+        .stat-icon.customers { background: #fff3e0; color: #f57c00; }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-label {
+            display: block;
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-trend {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-trend.positive {
+            color: #22c55e;
+        }
+
+        .stat-trend.negative {
+            color: #ef4444;
+        }
+
+        .quick-actions {
+            padding: 2rem;
+        }
+
+        .quick-actions h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #fff;
+            border-radius: 8px;
+            color: #1e293b;
+            text-decoration: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+
+        .action-button:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="admin-layout">
+    {% include 'admin/_sidebar.html.twig' %}
+    
+    <main class="admin-content">
+        <div class="admin-header">
+            <h1>Dashboard Overview</h1>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-content">
+                        <div class="stat-icon orders">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Today's Orders</span>
+                            <span class="stat-value">25</span>
+                            <div class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>12%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-content">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Revenue</span>
+                            <span class="stat-value">€2,450</span>
+                            <div class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>8%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-content">
+                        <div class="stat-icon customers">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Customers</span>
+                            <span class="stat-value">156</span>
+                            <div class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+            <div class="action-links">
+                <a href="{{ path('admin_product_new') }}" class="action-button">
+                    <i class="fas fa-plus"></i> Add Product
+                </a>
+                <a href="{{ path('admin_category_new') }}" class="action-button">
+                    <i class="fas fa-tags"></i> Add Category
+                </a>
+                <a href="{{ path('admin_order_details') }}" class="action-button">
+                    <i class="fas fa-list"></i> View Orders
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %} 
